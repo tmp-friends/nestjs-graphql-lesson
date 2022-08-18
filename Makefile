@@ -2,16 +2,16 @@
 init:
 	make clean
 	docker-compose build
-	docker-compose run --rm app npm ci
+	# docker-compose run --rm app npm ci
+	docker-compose run --rm app npm i
 	docker-compose run --rm app prisma migrate deploy
 
 .PHONY: clean
-clearn:
+clean:
 	docker-compose down --volumes
 
 .PHONY: dev
 dev:
-	docker-compose down app
 	docker-compose up app
 
 .PHONY: unit
@@ -24,11 +24,10 @@ e2e:
 
 .PHONY: infra
 infra:
-	docker-compose down postgres 
 	docker-compose up postgres
 
 .PHONY: bash
 bash:
-	docker-compose up --no-start app 
+	docker-compose up --no-start app
 	docker-compose start app
 	docker-compose exec app sh

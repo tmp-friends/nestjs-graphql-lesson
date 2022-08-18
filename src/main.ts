@@ -1,15 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { PrismaService } from './prisma/prisma.service';
 
 // NestJSはgraceful shutdownの仕組みが内蔵されている。
 // https://docs.nestjs.com/fundamentals/lifecycle-events
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   await app.listen(3000);
-
-  const prismaService = app.get(PrismaService);
-  await prismaService.enableShutdownHooks(app);
 }
 bootstrap();
 

@@ -53,7 +53,7 @@ RUN npm i -g prisma
 FROM dev as test
 ENV NODE_ENV=test
 
-RUN npm ci
+# RUN npm ci
 
 ###############
 #    build    #
