@@ -3,6 +3,8 @@ init:
 	make clean
 	docker-compose build
 	# docker-compose run --rm app npm ci
+	# docker-compose run --rm app rm -rf node_modules/
+	docker-compose run --rm app npm cache clean --force
 	docker-compose run --rm app npm i
 	docker-compose run --rm app prisma migrate deploy
 
