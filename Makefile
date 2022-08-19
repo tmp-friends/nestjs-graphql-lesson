@@ -14,7 +14,7 @@ clean:
 
 .PHONY: dev
 dev:
-	docker-compose up app
+	docker-compose up -d app
 
 .PHONY: unit
 unit:
